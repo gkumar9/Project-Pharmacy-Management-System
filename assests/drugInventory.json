@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "name": "PCM",
+            "id": 123,
+            "description": "An anti-inflammatory agent, structurally related to the salicylates, which is active in inflammatory bowel disease. It is considered to be the active moiety of sulphasalazine. (From Martindale, The Extra Pharmacopoeia, 30th ed)",
+            "type": "small molecules",
+            "price": "12 INR",
+            "quantity": 22
+        },
+        {
+            "name": "PCM",
+            "id": 123,
+            "description": "asdasd",
+            "type": "small molecules",
+            "price": "12 INR",
+            "quantity": 22
+        },
+        {
+            "name": "PCM",
+            "id": 123,
+            "description": "asdasd",
+            "type": "small molecules",
+            "price": "12 INR",
+            "quantity": 22
+        }
+    ]
+}

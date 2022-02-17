@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "status": "Ordered",
+            "id": 123,
+            "orderTime": "February 16 2022 4:21 PM",
+            "deliveryMode": "Home delivery",
+            "paymentMethod": "Net Banking"
+        },
+        {
+            "status": "Shipped",
+            "id": 12388,
+            "orderTime": "February 18 2022 4:21 PM",
+            "deliveryMode": "Home delivery",
+            "paymentMethod": "UPI"
+        },
+        {
+            "status": "Shipped",
+            "id": 22123,
+            "orderTime": "February 20 2022 4:21 PM",
+            "deliveryMode": "Pick up",
+            "paymentMethod": "Credit Card"
+        },
+        {
+            "status": "Delivered",
+            "id": 8893,
+            "orderTime": "February 28 2022 4:21 PM",
+            "deliveryMode": "Pick up",
+            "paymentMethod": "Credit Card"
+        }
+    ]
+}
