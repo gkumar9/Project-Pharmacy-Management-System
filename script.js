@@ -5,35 +5,27 @@ $(function () {
             $(this).remove();
         });
     });
+    $('#tableInventory').DataTable({
+        "ajax": './assests/drugInventory.json',
+        "columns": [
+            { "data": "id" },
+            { "data": "name" },
+            { "data": "description" },
+            { "data": "type" },
+            { "data": "price" },
+            { "data": "quantity" },
 
-    $.getJSON('./assests/drugInventory.json', function (data) {
-        // console.log(data);
-        data.data.forEach(function (item) {
-            var newRow = `<tr>
-            <td>#${item.id}</td>
-            <td>${item.name}</td>
-            <td> ${item.description}</td>
-            <td>${item.type}</td>
-            <td>${item.price}</td>
-            <td>${item.quantity} </td>
-        </tr>`
-            $('.tableInventory').append(newRow);
-        })
-
+        ], "paging": false
     });
-    $.getJSON('./assests/orderListing.json', function (data) {
-        // console.log(data);
-        data.data.forEach(function (item) {
-            var newRow = `<tr>
-            <td>#${item.id}</td>
-            <td>${item.status}</td>
-            <td>${item.orderTime}</td>
-            <td>${item.deliveryMode}</td>
-            <td>${item.paymentMethod}</td>
-        </tr>`
-            $('.tableOrder').append(newRow);
-        })
-
+    $('#myTable').DataTable({
+        "ajax": './assests/orderListing.json',
+        "columns": [
+            { "data": "id" },
+            { "data": "status" },
+            { "data": "orderTime" },
+            { "data": "deliveryMode" },
+            { "data": "paymentMethod" },
+        ], "paging": false
     });
 
     $('form').on('submit', function (e) {
@@ -55,12 +47,17 @@ $(function () {
             <td>${price}</td>
             <td>${quantity} </td>
         </tr>`
-        $('.tableInventory').append(newRow);
+        $('#tableInventory').append(newRow);
 
 
     });
     $('.selectpicker').change(function () {
-        $('.symptomsList').append(`<li class="list-group-item d-flex justify-content-between align-items-center">${$('option:selected', this).text()}<span class="badge bg-primary rounded-pill">x</span></li>`)
+        $('.symptomsList').append(`<li class="list-group-item d-flex justify-content-between align-items-center">${$('option:selected', this).text()}<a href="#" role="button" class="close-icon">&#x2715</a></li>`)
+    });
+    $('.symptomsList').on('click','a',function () {
+        $(this).closest('li').fadeOut(500, function () {
+            $(this).remove();
+        });
     });
 })
 
@@ -124,3 +121,48 @@ new Chart("myChart1", {
         legend: { display: false }
     }
 });
+var ctx = document.getElementById('myChart2')
+// eslint-disable-next-line no-unused-vars
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+        ],
+        datasets: [{
+            data: [
+                15339,
+                21345,
+                18483,
+                24003,
+                23489,
+                24092,
+                12034
+            ],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: false
+                }
+            }]
+        },
+        legend: {
+            display: false
+        }
+    }
+}
+);

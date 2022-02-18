@@ -10,6 +10,10 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css"
 		integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="styles.css">
 	<link rel="icon" type="image/x-icon" href="./assests/pms-fav.png">
 	<title>
@@ -23,7 +27,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-warning ">
 				<div class="container-fluid">
 
-					<a class="navbar-brand" href="#"><img src="./assests/pharmacy-logo1.png" class="img img-fluid"
+					<a class="navbar-brand"><img src="./assests/pharmacy-logo1.png" class="img img-fluid"
 							alt="logo"></a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 						data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -48,10 +52,9 @@
 								<a role="tab" data-bs-toggle="tab" data-bs-target="#online-orders" class="nav-link "
 									href="#online-orders">Online orders</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link " href="#">Log out</a>
-							</li>
-						</ul>
+						</ul><em class="navbar-text">
+							“Always laugh when you can. It is cheap medicine.”
+						</em>
 					</div>
 				</div>
 			</nav>
@@ -73,8 +76,7 @@
 					</li>
 					<li class="nav-item" role="presentation">
 						<a role="tab" data-bs-toggle="tab" data-bs-target="#online-orders" class="nav-link py-3"
-							href="#online-orders">Online orders <span class="border border-info px-2 bg-light"
-								style="float:right;border-radius: 50%;">1</span></a>
+							href="#online-orders">Online orders</a>
 					</li>
 				</ul>
 			</nav>
@@ -83,11 +85,106 @@
 					<div id="dashboard" role="tabpanel" class="tab-pane active">
 						<div class="container-fluid">
 							<div class="row row-cols-1 justify-content-center">
-								<!-- <h4 class="my-2">Notifications:</h4> -->
 								<section class="my-1">
-									<div class="card my-1">
+									<div class="row">
+
+										<!-- Earnings (Monthly) Card Example -->
+										<div class="col-6 col-xl-3 col-md-6 mb-4">
+											<div class="card border-left-primary shadow h-100 py-2">
+												<div class="card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col mr-2">
+															<div
+																class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+																Earnings (Monthly)</div>
+															<div class="h5 mb-0 font-weight-bold text-gray-800">$40,000
+															</div>
+														</div>
+														<div class="col-auto">
+															<i class="fas fa-calendar fa-2x text-gray-300"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Earnings (Monthly) Card Example -->
+										<div class="col-6  col-xl-3 col-md-6 mb-4">
+											<div class="card border-left-success shadow h-100 py-2">
+												<div class="card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col mr-2">
+															<div
+																class="text-xs font-weight-bold text-success text-uppercase mb-1">
+																Earnings (Annual)</div>
+															<div class="h5 mb-0 font-weight-bold text-gray-800">$215,000
+															</div>
+														</div>
+														<div class="col-auto">
+															<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Earnings (Monthly) Card Example -->
+										<div class="col-6 col-xl-3 col-md-6 mb-4">
+											<div class="card border-left-info shadow h-100 py-2">
+												<div class="card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col mr-2">
+															<div
+																class="text-xs font-weight-bold text-info text-uppercase mb-1">
+																Inventory
+															</div>
+															<div class="row no-gutters align-items-center">
+																<div class="col-auto">
+																	<div
+																		class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+																		50%</div>
+																</div>
+																<div class="col">
+																	<div class="progress progress-sm mr-2">
+																		<div class="progress-bar bg-info"
+																			role="progressbar" style="width: 50%"
+																			aria-valuenow="50" aria-valuemin="0"
+																			aria-valuemax="100"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-auto">
+															<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Pending Requests Card Example -->
+										<div class="col-6  col-xl-3 col-md-6 mb-4">
+											<div class="card border-left-warning shadow h-100 py-2">
+												<div class="card-body">
+													<div class="row no-gutters align-items-center">
+														<div class="col mr-2">
+															<div
+																class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+																Prescription</div>
+															<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+														</div>
+														<div class="col-auto">
+															<i class="fas fa-comments fa-2x text-gray-300"></i>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card my-1 notificationCard">
 										<div class="card-body">
-											<h5 class="card-title">New order received: #DB00244 </h5>
+											<h5 class="card-title"><i class="fa-regular fa-bell"></i>&nbsp; New order
+												received: #DB00244 </h5>
 											<label style="color:gray;font-size: smaller;">2 Packs of Mesalazine.</label>
 											<span style="font-size: smaller;color:gray;float: right;"> 12/02/2022</span>
 											<a href="#" role="button" class="close-icon">&#x2715</a>
@@ -96,13 +193,13 @@
 												considered
 												to be the active moiety of sulphasalazine. (From Martindale, The Extra
 												Pharmacopoeia, 30th ed)</p>
-											<!-- <a href="#" class="btn btn-primary btn-sm" style="float: left;">Button</a> -->
 
 										</div>
 									</div>
-									<div class="card my-1">
+									<div class="card my-1 notificationCard">
 										<div class="card-body">
-											<h5 class="card-title">New order received: #DB00244 </h5>
+											<h5 class="card-title"><i class="fa-regular fa-bell"></i>&nbsp;New order
+												received: #DB01246 </h5>
 											<label style="color:gray;font-size: smaller;">2 Packs of Mesalazine.</label>
 											<span style="font-size: smaller;color:gray;float: right;"> 12/02/2022</span>
 											<a href="#" role="button" class="close-icon">&#x2715</a>
@@ -111,46 +208,12 @@
 												considered
 												to be the active moiety of sulphasalazine. (From Martindale, The Extra
 												Pharmacopoeia, 30th ed)</p>
-											<!-- <a href="#" class="btn btn-primary btn-sm" style="float: left;">Button</a> -->
 
 										</div>
 									</div>
 								</section>
-								<h6 class="my-2">Analytics for sales:</h6>
-								<div class="accordion" id="accordionExample">
-									<div class="accordion-item">
-										<h2 class="accordion-header" id="headingOne">
-											<button class="accordion-button" type="button" data-bs-toggle="collapse"
-												data-bs-target="#collapseOne" aria-expanded="true"
-												aria-controls="collapseOne">
-												Region/demography
-											</button>
-										</h2>
-										<div id="collapseOne" class="accordion-collapse collapse show"
-											aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-											<div class="accordion-body">
-												<canvas id="myChart" style="width:100%;max-width:400px"></canvas>
+								<canvas class="my-4 w-100" id="myChart2" width="900" height="380"></canvas>
 
-											</div>
-										</div>
-									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header" id="headingTwo">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-												aria-expanded="false" aria-controls="collapseTwo">
-												Orders
-											</button>
-										</h2>
-										<div id="collapseTwo" class="accordion-collapse collapse"
-											aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-											<div class="accordion-body">
-												<canvas id="myChart1" style="width:100%;max-width:400px"></canvas>
-											</div>
-										</div>
-									</div>
-
-								</div>
 
 
 							</div>
@@ -159,22 +222,26 @@
 					<div id="drug-inventory" role="tabpanel" class="tab-pane  ">
 						<div class="container-fluid">
 							<div class="row row-cols-1 justify-content-start">
-								<div class="row justify-content-start align-self-start">
-									<div class="col">
-										<h4 class="my-2">Drug inventory</h4>
+								<div class="row justify-content-start align-self-start" style="padding-right:0px">
+									<div class="col-4">
+										<h4 class="my-2">Drug inventory &nbsp;<i
+												class="fas fa-clipboard-list fa-1x text-gray-300"></i></h4>
+										<div class="progress">
+											<div class="progress-bar" role="progressbar" style="width: 50%"
+												aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50% Strength
+											</div>
+										</div>
 									</div>
-									<div class="col text-end align-self-center">
-										<!-- Button trigger modal -->
+									<div class="col text-end align-self-end" style="padding-right:0px">
 										<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 											data-bs-target="#exampleModal">
 											+ Add
 										</button>
 
-										<!-- Modal -->
 										<div class="modal fade" id="exampleModal" tabindex="-1"
 											aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
-												<div class="modal-content">
+												<div class="modal-content text-start">
 													<div class="modal-header">
 														<h5 class="modal-title" id="exampleModalLabel">Add
 															information related to new drug
@@ -189,7 +256,7 @@
 																	class="col-sm-2 col-form-label">ID</label>
 																<div class="col-sm-10">
 																	<input type="number" class="form-control"
-																		id="inputID">
+																		id="inputID" required>
 																</div>
 															</div>
 															<div class="row mb-3">
@@ -267,11 +334,11 @@
 									</div>
 								</div>
 							</div>
-							<section class="my-1">
+							<section class="my-4">
 								<div class="container-fluid">
-
-									<div class="row mt-2 table-responsive">
-										<table class="table table-striped table-hover tableInventory">
+									<div class="table-responsive">
+										<table id="tableInventory" class="table table-bordered table-striped"
+											width="100%">
 											<thead class="table-light">
 												<tr>
 													<th scope="col">ID</th>
@@ -284,39 +351,8 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>#1245</td>
-													<td> Mesalazine</td>
-													<td>An anti-inflammatory agent, structurally related to the
-														salicylates, which is active in inflammatory bowel disease. It
-														is considered to be the active moiety of sulphasalazine. (From
-														Martindale, The Extra Pharmacopoeia, 30th ed)</td>
-													<td>small_molecule</td>
-													<td>100 INR</td>
-													<td>15 </td>
-												</tr>
-
 											</tbody>
 										</table>
-									</div>
-									<div class="row">
-										<div class="col-3" style="color:lightgray">Showing 1-1 entries</div>
-										<div class="col-3 offset-6 text-end" style="color:gray">
-											<div class="btn-group">
-												<button type="button" class="btn btn-light dropdown-toggle"
-													data-bs-toggle="dropdown" data-bs-display="static"
-													aria-expanded="false">
-													25
-												</button>
-												<ul class="dropdown-menu dropdown-menu-lg-end">
-													<li><button class="dropdown-item" type="button">Action</button></li>
-													<li><button class="dropdown-item" type="button">Another
-															action</button></li>
-													<li><button class="dropdown-item" type="button">Something else
-															here</button></li>
-												</ul>
-											</div>
-										</div>
-
 									</div>
 							</section>
 
@@ -326,89 +362,107 @@
 					<div id="e-prescription" role="tabpanel" class="tab-pane">
 						<div class="container-fluid">
 							<div class="row row-cols-1 justify-content-center">
+								<div class="row justify-content-start align-self-start" style="padding-right:0px">
+									<div class="col-4">
+										<h4 class="my-2">E-prescription &nbsp;<i
+												class="fas fa-comments fa-1x text-gray-300"></i></h4>
 
-								<h4 class="my-2">E-prescription</h4>
-								<section class="mb-4">
-									<div class="mt-3 mb-3 row">
-										<label for="inputTemp" class="col-sm-2 col-form-label">Temperature in F</label>
-										<div class="col-sm-4">
-											<input type="number" class="form-control" id="inputTemp">
-										</div>
 									</div>
-									<div class="mb-3 row">
-										<label for="inputAge" class="col-sm-2 col-form-label">Age</label>
-										<div class="col-sm-4">
-											<input type="number" class="form-control" id="inputAge">
-										</div>
+									<div class="col text-end align-self-end" style="padding-right:0px">
+										<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+											data-bs-target="#exampleModal">
+											Diagnosis
+										</button>
 									</div>
-									<div class="row">
-										<div class="col-sm-2">
-											<p>Select Symptoms:</p>
-										</div>
-										<div class="col-sm-4">
-											<select class="selectpicker" aria-label="size  select example">
-												<option value="1">Headaches</option>
-												<option value="2">Body aches</option>
-												<option value="3">Toothaches</option>
-												<option value="4">Common cold</option>
-												<option value="5">Nasal congestion</option>
-											</select>
-
-										</div>
-									</div>
-
-									<div class="mt-4 w-50">
-										<ul class="list-group  list-group-flush symptomsList">
-										</ul>
-									</div>
-									<!-- <hr /> -->
-									<h4 class=" my-4">Rx:</h4>
-									<div class="table-responsive  my-2">
-										<table class="table">
-											<thead>
-												<tr>
-													<th scope="col">#</th>
-													<th scope="col">Name</th>
-													<th scope="col">Dosage</th>
-													<th scope="col">Days</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<th scope="row">1</th>
-													<td>PCM</td>
-													<td>1-0-1</td>
-													<td>3 days</td>
-												</tr>
-												<tr>
-													<th scope="row">2</th>
-													<td>DOLO</td>
-													<td>1-0-1</td>
-													<td>3 days</td>
-												</tr>
-												<tr>
-													<th scope="row">3</th>
-													<td>Cetirizine</td>
-													<td>1-0-1</td>
-													<td>1 day</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</section>
+								</div>
 
 
 							</div>
+							<section class="mb-4">
+								<div class="mt-3 mb-3 row">
+									<label for="inputTemp" class="col-sm-2 col-form-label">Temperature in F</label>
+									<div class="col-sm-4">
+										<input type="number" class="form-control" id="inputTemp">
+									</div>
+								</div>
+								<div class="mb-3 row">
+									<label for="inputAge" class="col-sm-2 col-form-label">Age</label>
+									<div class="col-sm-4">
+										<input type="number" class="form-control" id="inputAge">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-2">
+										<p>Select Symptoms:</p>
+									</div>
+									<div class="col-sm-4">
+										<select class="selectpicker" aria-label="size  select example">
+											<option value="1">Headaches</option>
+											<option value="2">Body aches</option>
+											<option value="3">Toothaches</option>
+											<option value="4">Common cold</option>
+											<option value="5">Nasal congestion</option>
+										</select>
+
+									</div>
+								</div>
+
+								<div class="mt-4 w-50">
+									<ul class="list-group  list-group-flush symptomsList">
+										<li class="list-group-item d-flex justify-content-between align-items-center">
+											Headache <a href="#" role="button" class="close-icon">&#x2715</a>
+										</li>
+									</ul>
+								</div>
+								<hr />
+								<h4 class=" my-4">Rx:</h4>
+								<div class="table-responsive  my-2">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Name</th>
+												<th scope="col">Dosage</th>
+												<th scope="col">Days</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>PCM</td>
+												<td>1-0-1</td>
+												<td>3 days</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>DOLO</td>
+												<td>1-0-1</td>
+												<td>3 days</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>Cetirizine</td>
+												<td>1-0-1</td>
+												<td>1 day</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</section>
+
+
 						</div>
 					</div>
 					<div id="online-orders" role="tabpanel" class="tab-pane">
 						<div class="container-fluid">
 							<div class="row row-cols-1 justify-content-start">
 
-								<h4 class="my-2">Online orders</h4>
+								<h4 class="my-2">Online orders &nbsp;<i
+										class="fas fa-dollar-sign fa-1x text-gray-300"></i></h4>
 								<section class="my-1">
-									<div class="row mt-2 table-responsive">
-										<table class="table table-bordered table-hover tableOrder">
+									<div class="table-responsive">
+										<table class="table table-bordered table-striped tableOrder" id="myTable"
+											width="100%">
 											<thead class="table-light">
 												<tr>
 													<th scope="col">Order ID</th>
@@ -421,35 +475,50 @@
 											<tbody></tbody>
 										</table>
 									</div>
-									<div class="row">
+									<!-- <div class="row">
 										<div class="col-3" style="color:lightgray">Showing 1-1 entries</div>
-										<!-- <div class="col-3 offset-6 text-end" style="color:gray">
-											<div class="btn-group">
-												<button type="button" class="btn btn-light dropdown-toggle"
-													data-bs-toggle="dropdown" data-bs-display="static"
-													aria-expanded="false">
-													25
-												</button>
-												<ul class="dropdown-menu dropdown-menu-lg-end">
-													<li><button class="dropdown-item" type="button">Action</button></li>
-													<li><button class="dropdown-item" type="button">Another
-															action</button></li>
-													<li><button class="dropdown-item" type="button">Something else
-															here</button></li>
-												</ul>
-											</div>
-										</div> -->
+										
 
-									</div>
+									</div> -->
 								</section>
 								<hr />
 
 								<section class="my-2 row">
-									<article class="col-6">
-										<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-									</article>
-									<article class="col-6">
-									</article>
+									<h6 class="my-2">Analytics for sales:</h6>
+									<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+											<h2 class="accordion-header" id="headingOne">
+												<button class="accordion-button" type="button" data-bs-toggle="collapse"
+													data-bs-target="#collapseOne" aria-expanded="true"
+													aria-controls="collapseOne">
+													Region/demography
+												</button>
+											</h2>
+											<div id="collapseOne" class="accordion-collapse collapse show"
+												aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+												<div class="accordion-body">
+													<canvas id="myChart" style="width:100%;max-width:400px"></canvas>
+
+												</div>
+											</div>
+										</div>
+										<div class="accordion-item">
+											<h2 class="accordion-header" id="headingTwo">
+												<button class="accordion-button collapsed" type="button"
+													data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+													aria-expanded="false" aria-controls="collapseTwo">
+													Orders
+												</button>
+											</h2>
+											<div id="collapseTwo" class="accordion-collapse collapse"
+												aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+												<div class="accordion-body">
+													<canvas id="myChart1" style="width:100%;max-width:400px"></canvas>
+												</div>
+											</div>
+										</div>
+
+									</div>
 								</section>
 
 
@@ -459,7 +528,7 @@
 			</article>
 
 		</div>
-		<footer class="bg-dark text-center text-lg-start">
+		<footer class="bg-warning text-center text-lg-start ">
 			<div class="text-light text-center p-3">
 				© 2022 Copyright:
 				<a class="text-light" href="#">Pharmacysupport.com</a>
@@ -475,11 +544,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"
 		integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script> -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	<script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+	<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 	<script src="script.js"></script>
 
 </body>
