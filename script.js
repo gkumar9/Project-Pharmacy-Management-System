@@ -59,6 +59,9 @@ $(function () {
             $(this).remove();
         });
     });
+    $('#diagnosis').click(function(){
+        $('#diagnosisTable').show();
+    })
 })
 
 
