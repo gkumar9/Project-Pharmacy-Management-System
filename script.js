@@ -54,12 +54,12 @@ $(function () {
     $('.selectpicker').change(function () {
         $('.symptomsList').append(`<li class="list-group-item d-flex justify-content-between align-items-center">${$('option:selected', this).text()}<a href="#" role="button" class="close-icon">&#x2715</a></li>`)
     });
-    $('.symptomsList').on('click','a',function () {
+    $('.symptomsList').on('click', 'a', function () {
         $(this).closest('li').fadeOut(500, function () {
             $(this).remove();
         });
     });
-    $('#diagnosis').click(function(){
+    $('#diagnosis').click(function () {
         $('#diagnosisTable').show();
     })
 })
