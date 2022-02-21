@@ -1,5 +1,5 @@
 $(function () {
-    console.log('gaurav killing it');
+    // console.log('gaurav killing it');
     $('.card-body a').click(function () {
         $(this).closest('.card').fadeOut(500, function () {
             $(this).remove();
@@ -35,12 +35,12 @@ $(function () {
         var description = $('#inputDescription').val();
         var type1 = $('#gridRadios1').val();
         var type2 = $('#gridRadios2').val();
-        console.log(type1, type2);
+        // console.log(type1, type2);
         var price = $('#inputPrice').val();
         var quantity = $('#inputQuantity').val();
 
         var newRow = `<tr>
-            <td>#${id}</td>
+            <td>${id}</td>
             <td>${name}</td>
             <td>${description}</td>
             <td>${type1}</td>
@@ -48,6 +48,8 @@ $(function () {
             <td>${quantity} </td>
         </tr>`
         $('#tableInventory').append(newRow);
+        $('#exampleModal').modal('hide');
+        $(".toast").toast('show');
 
 
     });
@@ -67,7 +69,14 @@ $(function () {
 
 
 
-
+$(document).click(function (event) {
+    var clickover = $(event.target);
+    var $navbar = $(".navbar-collapse");
+    var _opened = $navbar.hasClass("show");
+    if (_opened === true && !clickover.hasClass("navbar-toggler")) {
+        $navbar.collapse('hide');
+    }
+});
 
 
 
