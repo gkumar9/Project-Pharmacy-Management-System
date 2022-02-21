@@ -1,5 +1,5 @@
 $(function () {
-    // console.log('gaurav killing it');
+   
     $('.card-body a').click(function () {
         $(this).closest('.card').fadeOut(500, function () {
             $(this).remove();
@@ -33,9 +33,7 @@ $(function () {
         var id = $('#inputID').val();
         var name = $('#inputName').val();
         var description = $('#inputDescription').val();
-        var type1 = $('#gridRadios1').val();
-        var type2 = $('#gridRadios2').val();
-        // console.log(type1, type2);
+        var type= $('input[name=gridRadios]:checked').val();
         var price = $('#inputPrice').val();
         var quantity = $('#inputQuantity').val();
 
@@ -43,7 +41,7 @@ $(function () {
             <td>${id}</td>
             <td>${name}</td>
             <td>${description}</td>
-            <td>${type1}</td>
+            <td>${type}</td>
             <td>${price}</td>
             <td>${quantity} </td>
         </tr>`
@@ -105,7 +103,7 @@ new Chart("myChart", {
     options: {
         title: {
             display: true,
-            text: "World Wide Wine Production 2018"
+            text: "World Wide sales 2021"
         }
     }
 });
@@ -134,7 +132,6 @@ new Chart("myChart1", {
     }
 });
 var ctx = document.getElementById('myChart2')
-// eslint-disable-next-line no-unused-vars
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {

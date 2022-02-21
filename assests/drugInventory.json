@@ -1,25 +1,25 @@
 {
     "data": [
         {
-            "name": "PCM",
-            "id": 123,
+            "name": "Mesalazine",
+            "id": "DB00244",
             "description": "An anti-inflammatory agent, structurally related to the salicylates, which is active in inflammatory bowel disease. It is considered to be the active moiety of sulphasalazine. (From Martindale, The Extra Pharmacopoeia, 30th ed)",
             "type": "small molecules",
-            "price": "12 INR",
+            "price": "120 INR",
             "quantity": 22
         },
         {
-            "name": "PCM",
-            "id": 123,
-            "description": "asdasd",
+            "name": "Imatinib",
+            "id": "DE00124",
+            "description": "Imatinib, sold under the brand names Gleevec and Glivec among others, is an oral chemotherapy medication used to treat cancer.",
             "type": "small molecules",
-            "price": "12 INR",
-            "quantity": 22
+            "price": "240 INR",
+            "quantity": 83
         },
         {
-            "name": "PCM",
-            "id": 123,
-            "description": "asdasd",
+            "name": "Cetirizine",
+            "id": "BA00789",
+            "description": "Cetirizine, sold under the brand name Zyrtec among others, is a second-generation antihistamine used to treat allergic rhinitis, dermatitis, and urticaria. It is taken by mouth. Effects generally begin within an hour and last for about a day.",
             "type": "small molecules",
             "price": "12 INR",
             "quantity": 22
