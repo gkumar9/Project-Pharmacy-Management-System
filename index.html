@@ -233,7 +233,7 @@
 
 										<div class="modal fade" id="exampleModal" tabindex="-1"
 											aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
+											<div class="modal-dialog modal-dialog-centered">
 												<div class="modal-content text-start">
 													<div class="modal-header">
 														<h5 class="modal-title" id="exampleModalLabel">Add
@@ -243,12 +243,12 @@
 															aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
-														<form class="formInput">
+														<form id="addDrugForm" class="formInput">
 															<div class="row mb-3">
 																<label for="inputID"
 																	class="col-sm-2 col-form-label">ID</label>
 																<div class="col-sm-10">
-																	<input type="number" class="form-control"
+																	<input type="text" class="form-control"
 																		id="inputID" required>
 																</div>
 															</div>
@@ -296,7 +296,7 @@
 																<label for="inputPrice"
 																	class="col-sm-2 col-form-label">Price</label>
 																<div class="col-sm-10">
-																	<input type="number" class="form-control"
+																	<input type="text" class="form-control"
 																		id="inputPrice">
 																</div>
 															</div>
@@ -320,18 +320,159 @@
 												</div>
 											</div>
 										</div>
+										<div class="modal fade" id="exampleModaledit" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content text-start">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Edit
+															information related to the drug
+														</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal"
+															aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														<form id="editDrugForm" class="formInput">
+															<div class="row mb-3">
+																<label for="inputIDedit"
+																	class="col-sm-2 col-form-label">ID</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control"
+																		id="inputIDedit" disabled>
+																</div>
+															</div>
+															<div class="row mb-3">
+																<label for="inputNameedit"
+																	class="col-sm-2 col-form-label">Name</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control"
+																		id="inputNameedit">
+																</div>
+															</div>
+															<div class="row mb-3">
+																<label for="inputDescriptionedit"
+																	class="col-sm-2 col-form-label">Description</label>
+																<div class="col-sm-10">
+																	<input type="textarea" class="form-control"
+																		id="inputDescriptionedit">
+																</div>
+															</div>
+															<fieldset class="row mb-3">
+																<legend class="col-form-label col-sm-2 pt-0">Type
+																</legend>
+																<div class="col-sm-10">
+																	<div class="form-check">
+																		<input class="form-check-input" type="radio"
+																			name="gridRadiosedit" id="gridRadios1edit"
+																			value="Small molecule">
+																		<label class="form-check-label"
+																			for="gridRadios1edit">
+																			Small molecule
+																		</label>
+																	</div>
+																	<div class="form-check">
+																		<input class="form-check-input" type="radio"
+																			name="gridRadiosedit" id="gridRadios2edit"
+																			value="Biotech">
+																		<label class="form-check-label"
+																			for="gridRadios2edit">
+																			Biotech
+																		</label>
+																	</div>
+																</div>
+															</fieldset>
+															<div class="row mb-3">
+																<label for="inputPriceedit"
+																	class="col-sm-2 col-form-label">Price</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control"
+																		id="inputPriceedit">
+																</div>
+															</div>
+															<div class="row mb-3">
+																<label for="inputQuantityedit"
+																	class="col-sm-2 col-form-label">Quantity</label>
+																<div class="col-sm-10">
+																	<input type="number" class="form-control"
+																		id="inputQuantityedit">
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-bs-dismiss="modal">Close</button>
+
+																<button type="submit"
+																	class="btn btn-primary">Submit</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="modal fade" id="exampleModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+											  <div class="modal-content">
+												<div class="modal-header">
+												  <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+												  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												  </button> -->
+												</div>
+												<div class="modal-body">
+												  Once deleted, it will not be retieved.
+												</div>
+												<div class="modal-footer">
+												  <button  id="deleteModalCancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+												  <button id="deleteModalConfirm" type="button" class="btn btn-primary">Confirm</button>
+												</div>
+											  </div>
+											</div>
+										  </div>
 										<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
-											<div class="toast align-items-center" role="alert" aria-live="assertive"
+											<div class="toast toastadd align-items-center" role="alert" aria-live="assertive"
 												aria-atomic="true">
 												<div class="d-flex">
 													<div class="toast-body">
-														New Drug added to the inventory.
+														 Added new Drug to the inventory.
 													</div>
 													<button type="button" class="btn-close me-2 m-auto"
 														data-bs-dismiss="toast" aria-label="Close"></button>
 												</div>
 											</div>
 										</div>
+										<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+											<div class="toast toastedit align-items-center" role="alert" aria-live="assertive"
+												aria-atomic="true">
+												<div class="d-flex">
+													<div class="toast-body">
+														 Edited the drug inventory.
+													</div>
+													<button type="button" class="btn-close me-2 m-auto"
+														data-bs-dismiss="toast" aria-label="Close"></button>
+												</div>
+											</div>
+										</div>
+										<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+											<div class="toast toastdelete align-items-center" role="alert" aria-live="assertive"
+												aria-atomic="true">
+												<div class="d-flex">
+													<div class="toast-body">
+														 Deleted a drug from inventrory.
+													</div>
+													<button type="button" class="btn-close me-2 m-auto"
+														data-bs-dismiss="toast" aria-label="Close"></button>
+												</div>
+											</div>
+										</div>
+										<div id="confirm" class="modal">
+											<div class="modal-body">
+											  Are you sure?
+											</div>
+											<div class="modal-footer">
+											  <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
+											  <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+											</div>
+										  </div>
 									</div>
 								</div>
 							</div>
@@ -346,8 +487,10 @@
 													<th scope="col">Name</th>
 													<th scope="col">Description</th>
 													<th scope="col">Type</th>
-													<th scope="col">Price</th>
+													<th scope="col">Price(INR)</th>
 													<th scope="col">Quantity</th>
+													<th scope="col">Edit</th>
+													<th scope="col">Delete</th>
 												</tr>
 											</thead>
 											<tbody>

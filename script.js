@@ -1,56 +1,219 @@
 $(function () {
-   
+
+    //Dashboard cards animation
     $('.card-body a').click(function () {
         $(this).closest('.card').fadeOut(500, function () {
             $(this).remove();
         });
     });
+    /*--------------------------------------------------------------------------------------*/
+
+    //GET API call for DrugInventory table
     $('#tableInventory').DataTable({
-        "ajax": './assests/drugInventory.json',
+        "ajax": 'http://localhost:3000/rest-api/drugInventory',
         "columns": [
-            { "data": "id" },
-            { "data": "name" },
-            { "data": "description" },
-            { "data": "type" },
-            { "data": "price" },
-            { "data": "quantity" },
+            { "data": "DrugID" },
+            { "data": "DrugName" },
+            { "data": "DrugDescription" },
+            { "data": "DrugType" },
+            { "data": "DrugPrice" },
+            { "data": "DrugQuantity" },
+            {
+                "data": null,
+                "defaultContent": `<button><i class="fas fa-edit"></i></button>`,
+                'render': function (data, type, row, meta) {
+                    return `<a class="editTable" id="edit-${data.id}" data-index=${data.id} href="javascript:void(0)"><i class="fas fa-edit"></i></a>`;
+                }
+            },
+            {
+                "data": null,
+                "defaultContent": `<button><i class="fa-solid fa-trash"></i></button>`,
+                'render': function (data, type, row, meta) {
+                    return `<a class="deleteTable" id="delete-${data.id}" data-index=${data.id} href="javascript:void(0)"><i class="fas fa-trash"></i></a>`;
+                }
+            }
 
         ], "paging": false
     });
+    /*--------------------------------------------------------------------------------------*/
+
+
+    //Edit functionality of DrugInventory table-setting up modal form
+    $('#tableInventory').on("click", "a.editTable ", function (data) {
+        var $row = jQuery(this).closest('tr');
+        var $columns = $row.find('td');
+        $('#inputIDedit').val(($columns[0].innerHTML));
+        $('#inputNameedit').val($columns[1].innerHTML);
+        $('#inputDescriptionedit').val($columns[2].innerHTML);
+        $columns[3].innerHTML == $('input[name=gridRadiosedit][id=gridRadios1edit]').val() ? $('input[name=gridRadiosedit][id=gridRadios1edit]').prop('checked', true) : $('input[name=gridRadiosedit][id=gridRadios2edit]').prop('checked', true);
+        $('input[name=gridRadiosedit]:checked').val($columns[3].innerHTML);
+        $('#inputPriceedit').val(parseInt($columns[4].innerHTML));
+        $('#inputQuantityedit').val($columns[5].innerHTML);
+        $('#exampleModaledit').modal('show');
+
+    });
+    /*--------------------------------------------------------------------------------------*/
+
+    //Delete functionality of DrugInventory table
+    $('#tableInventory').on("click", "a.deleteTable ", function (data) {
+        var $row = jQuery(this).closest('tr');
+        var $columns = $row.find('td');
+        console.log(($columns[0].innerHTML));
+        $('#exampleModalDelete').modal('show');
+        $('button#deleteModalConfirm').attr('data-id', $columns[0].innerHTML)
+    });
+    /*--------------------------------------------------------------------------------------*/
+
+    //     $('#exampleModalDelete').on('show.bs.modal', function (e) {
+
+    //         // access parsed information through relatedTarget
+    //         // console.log(e.relatedTarget.id);
+    //         // $('button#deleteModalConfirm').attr('data-id',e.relatedTarget.id)
+
+    //    });
+
+
+
+
+    //Delete modal form submit event
+    $('#deleteModalConfirm').click(function () {
+        let id = $(this).attr('data-id')
+        $.ajax({
+            type: "DELETE",
+            url: 'http://localhost:3000/rest-api/delete/drugInventory/' + $(this).attr('data-id'),
+            dataType: 'json',
+            success: function (response) {
+
+                $('#exampleModalDelete').modal('hide');
+                $(".toastdelete").toast('show');
+                console.log('id', id)
+                $.each($('#tableInventory tbody tr td'), function () {
+                    if ($(this).text() === id) {
+                        $(this).closest("tr").fadeOut(500, function () {
+                            $(this).remove();
+                        });
+                        return;
+                    }
+                });
+            },
+            error: function (err) { console.log('err', err) }
+        });
+    });
+
+    //Delete modal form submit event
+    $('#deleteModalCancel').click(function () {
+        $('#exampleModalDelete').modal('hide');
+    });
+
+    //GET API call for Orders table
     $('#myTable').DataTable({
-        "ajax": './assests/orderListing.json',
+        "ajax": 'http://localhost:3000/rest-api/orders',
         "columns": [
-            { "data": "id" },
-            { "data": "status" },
-            { "data": "orderTime" },
-            { "data": "deliveryMode" },
-            { "data": "paymentMethod" },
+            { "data": "OrderID" },
+            { "data": "OrderStatus" },
+            { "data": "OrderTime" },
+            { "data": "OrderDeliveryMode" },
+            { "data": "OrderPaymentMethod" },
         ], "paging": false
     });
+    /*--------------------------------------------------------------------------------------*/
 
-    $('form').on('submit', function (e) {
+    //Edit Drug Form submit event
+    $('form#editDrugForm').on('submit', function (e) {
         e.preventDefault();
-        var id = $('#inputID').val();
-        var name = $('#inputName').val();
-        var description = $('#inputDescription').val();
-        var type= $('input[name=gridRadios]:checked').val();
-        var price = $('#inputPrice').val();
-        var quantity = $('#inputQuantity').val();
+        let DrugID = $('#inputIDedit').val();
+        let DrugName = $('#inputNameedit').val();
+        let DrugDescription = $('#inputDescriptionedit').val();
+        let DrugType = $('input[name=gridRadiosedit]:checked').val();
+        let DrugPrice = $('#inputPriceedit').val();
+        let DrugQuantity = $('#inputQuantityedit').val();
+
+        $.ajax({
+            type: "PUT",
+            url: 'http://localhost:3000/rest-api/edit/drugInventory/' + DrugID,
+            data: {
+                // "DrugID": DrugID,
+                "DrugName": DrugName,
+                "DrugDescription": DrugDescription,
+                "DrugType": DrugType,
+                "DrugPrice": DrugPrice,
+                "DrugQuantity": DrugQuantity
+            },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                let row;
+                $.each($('#tableInventory tbody tr td'), function () {
+                    if ($(this).text() === DrugID) {
+                        var newRow = `
+                            <td>${DrugID}</td>
+                            <td>${DrugName}</td>
+                            <td>${DrugDescription}</td>
+                            <td>${DrugType}</td>
+                            <td>${DrugPrice}</td>
+                            <td>${DrugQuantity} </td>
+                            <td><a class="editTable" id="edit-${DrugID}" data-index=${DrugID} href="javascript:void(0)"><i class="fas fa-edit"></i></a></td>
+                            <td><a class="deleteTable" id="delete-${DrugID}" data-index=${DrugID} href="javascript:void(0)"><i class="fas fa-trash"></i></a></td>
+                        `;
+                        $(this).closest("tr").html(newRow);
+                        return;
+                    }
+                });
+
+
+                $('#exampleModaledit').modal('hide');
+                $(".toastedit").toast('show');
+            },
+            error: function (err) { console.log('err', err) }
+        });
+    });
+    /*--------------------------------------------------------------------------------------*/
+
+
+    //Add Drug Form submit event
+    $('form#addDrugForm').on('submit', function (e) {
+        e.preventDefault();
+        let DrugID = $('#inputID').val();
+        let DrugName = $('#inputName').val();
+        let DrugDescription = $('#inputDescription').val();
+        let DrugType = $('input[name=gridRadios]:checked').val();
+        let DrugPrice = $('#inputPrice').val();
+        let DrugQuantity = $('#inputQuantity').val();
+
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost:3000/rest-api/new/drugInventory',
+            data: {
+                "DrugID": DrugID,
+                "DrugName": DrugName,
+                "DrugDescription": DrugDescription,
+                "DrugType": DrugType,
+                "DrugPrice": DrugPrice,
+                "DrugQuantity": DrugQuantity
+            },
+            dataType: 'application/json'
+        }, function (data) {
+            console.log(data);
+        });
 
         var newRow = `<tr>
-            <td>${id}</td>
-            <td>${name}</td>
-            <td>${description}</td>
-            <td>${type}</td>
-            <td>${price}</td>
-            <td>${quantity} </td>
+            <td>${DrugID}</td>
+            <td>${DrugName}</td>
+            <td>${DrugDescription}</td>
+            <td>${DrugType}</td>
+            <td>${DrugPrice}</td>
+            <td>${DrugQuantity} </td>
+            <td><a class="editTable" id="edit-${DrugID}" data-index=${DrugID} href="javascript:void(0)"><i class="fas fa-edit"></i></a></td>
+            <td><a class="deleteTable" id="delete-${DrugID}" data-index=${DrugID} href="javascript:void(0)"><i class="fas fa-trash"></i></a></td>
         </tr>`
         $('#tableInventory').append(newRow);
         $('#exampleModal').modal('hide');
-        $(".toast").toast('show');
-
-
+        $(".toastadd").toast('show');
     });
+    /*--------------------------------------------------------------------------------------*/
+
+
+
     $('.selectpicker').change(function () {
         $('.symptomsList').append(`<li class="list-group-item d-flex justify-content-between align-items-center">${$('option:selected', this).text()}<a href="#" role="button" class="close-icon">&#x2715</a></li>`)
     });
@@ -75,6 +238,7 @@ $(document).click(function (event) {
         $navbar.collapse('hide');
     }
 });
+
 
 
 
