@@ -77,16 +77,16 @@ $(function () {
 
     //Delete modal form submit event
     $('#deleteModalConfirm').click(function () {
+        $("#deleteModalConfirm").attr("disabled", true);
         let id = $(this).attr('data-id')
+
         $.ajax({
             type: "DELETE",
             url: 'http://18.209.9.245:3000/rest-api/delete/drugInventory/' + $(this).attr('data-id'),
             dataType: 'json',
             success: function (response) {
+                $("#deleteModalConfirm").attr("disabled", false);
 
-                $('#exampleModalDelete').modal('hide');
-                $(".toastdelete").toast('show');
-                console.log('id', id)
                 $.each($('#tableInventory tbody tr td'), function () {
                     if ($(this).text() === id) {
                         $(this).closest("tr").fadeOut(500, function () {
@@ -95,8 +95,17 @@ $(function () {
                         return;
                     }
                 });
+                $('#exampleModalDelete').modal('hide');
+                $(".toastdelete").toast('show');
+                // console.log('id', id)
+
             },
-            error: function (err) { console.log('err', err) }
+            error: function (err) {
+                $("#deleteModalConfirm").attr("disabled", false);
+                alert(err);
+                $('#exampleModalDelete').modal('hide');
+                console.log('err', err)
+            }
         });
     });
 
@@ -121,6 +130,7 @@ $(function () {
     //Edit Drug Form submit event
     $('form#editDrugForm').on('submit', function (e) {
         e.preventDefault();
+        $("form#editDrugForm button[type=submit]").attr("disabled", true);
         let DrugID = $('#inputIDedit').val();
         let DrugName = $('#inputNameedit').val();
         let DrugDescription = $('#inputDescriptionedit').val();
@@ -141,7 +151,8 @@ $(function () {
             },
             dataType: 'json',
             success: function (response) {
-                console.log(response);
+                $("form#editDrugForm button[type=submit]").attr("disabled", false);
+                // console.log(response);
                 let row;
                 $.each($('#tableInventory tbody tr td'), function () {
                     if ($(this).text() === DrugID) {
@@ -164,7 +175,12 @@ $(function () {
                 $('#exampleModaledit').modal('hide');
                 $(".toastedit").toast('show');
             },
-            error: function (err) { console.log('err', err) }
+            error: function (err) {
+                $("form#editDrugForm button[type=submit]").attr("disabled", false);
+                alert(err);
+                $('#exampleModaledit').modal('hide');
+                console.log('err', err)
+            }
         });
     });
     /*--------------------------------------------------------------------------------------*/
@@ -172,6 +188,7 @@ $(function () {
 
     //Add Drug Form submit event
     $('form#addDrugForm').on('submit', function (e) {
+        $("form#addDrugForm button[type=submit]").attr("disabled", true);
         e.preventDefault();
         let DrugID = $('#inputID').val();
         let DrugName = $('#inputName').val();
@@ -191,12 +208,11 @@ $(function () {
                 "DrugPrice": DrugPrice,
                 "DrugQuantity": DrugQuantity
             },
-            dataType: 'application/json'
-        }, function (data) {
-            console.log(data);
-        });
-
-        var newRow = `<tr>
+            dataType: 'json',
+            success: function (data) {
+                console.log('added',data)
+                $("form#addDrugForm button[type=submit]").attr("disabled", false);
+                var newRow = `<tr>
             <td>${DrugID}</td>
             <td>${DrugName}</td>
             <td>${DrugDescription}</td>
@@ -206,9 +222,19 @@ $(function () {
             <td><a class="editTable" id="edit-${DrugID}" data-index=${DrugID} href="javascript:void(0)"><i class="fas fa-edit"></i></a></td>
             <td><a class="deleteTable" id="delete-${DrugID}" data-index=${DrugID} href="javascript:void(0)"><i class="fas fa-trash"></i></a></td>
         </tr>`
-        $('#tableInventory').append(newRow);
-        $('#exampleModal').modal('hide');
-        $(".toastadd").toast('show');
+                $('#tableInventory').append(newRow);
+                $('#exampleModal').modal('hide');
+                $(".toastadd").toast('show');
+            },
+            error: function (err) {
+                $("form#addDrugForm button[type=submit]").attr("disabled", false);
+                alert(err);
+                $('#exampleModal').modal('hide');
+
+            }
+        });
+
+
     });
     /*--------------------------------------------------------------------------------------*/
 
