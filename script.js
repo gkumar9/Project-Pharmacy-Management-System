@@ -10,7 +10,7 @@ $(function () {
 
     //GET API call for DrugInventory table
     $('#tableInventory').DataTable({
-        "ajax": 'http://18.209.9.245:443/rest-api/drugInventory',
+        "ajax": 'http://18.209.9.245:3000/rest-api/drugInventory',
         "columns": [
             { "data": "DrugID" },
             { "data": "DrugName" },
@@ -82,7 +82,7 @@ $(function () {
 
         $.ajax({
             type: "DELETE",
-            url: 'http://18.209.9.245:443/rest-api/delete/drugInventory/' + $(this).attr('data-id'),
+            url: 'http://18.209.9.245:3000/rest-api/delete/drugInventory/' + $(this).attr('data-id'),
             dataType: 'json',
             success: function (response) {
                 $("#deleteModalConfirm").attr("disabled", false);
@@ -116,7 +116,7 @@ $(function () {
 
     //GET API call for Orders table
     $('#myTable').DataTable({
-        "ajax": 'http://18.209.9.245:443/rest-api/orders',
+        "ajax": 'http://18.209.9.245:3000/rest-api/orders',
         "columns": [
             { "data": "OrderID" },
             { "data": "OrderStatus" },
@@ -140,7 +140,7 @@ $(function () {
 
         $.ajax({
             type: "PUT",
-            url: 'http://18.209.9.245:443/rest-api/edit/drugInventory/' + DrugID,
+            url: 'http://18.209.9.245:3000/rest-api/edit/drugInventory/' + DrugID,
             data: {
                 // "DrugID": DrugID,
                 "DrugName": DrugName,
@@ -199,7 +199,7 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: 'http://18.209.9.245:443/rest-api/new/drugInventory',
+            url: 'http://18.209.9.245:3000/rest-api/new/drugInventory',
             data: {
                 "DrugID": DrugID,
                 "DrugName": DrugName,
