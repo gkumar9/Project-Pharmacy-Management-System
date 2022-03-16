@@ -1,5 +1,6 @@
 $(function () {
-
+    const URL = 'http://localhost:3000';
+    // const URL=http://18.209.9.245:3000;
     //Dashboard cards animation
     $('.card-body a').click(function () {
         $(this).closest('.card').fadeOut(500, function () {
@@ -10,7 +11,7 @@ $(function () {
 
     //GET API call for DrugInventory table
     $('#tableInventory').DataTable({
-        "ajax": 'http://18.209.9.245:3000/rest-api/drugInventory',
+        "ajax": URL + '/rest-api/drugInventory',
         "columns": [
             { "data": "DrugID" },
             { "data": "DrugName" },
@@ -82,7 +83,7 @@ $(function () {
 
         $.ajax({
             type: "DELETE",
-            url: 'http://18.209.9.245:3000/rest-api/delete/drugInventory/' + $(this).attr('data-id'),
+            url: URL + '/rest-api/delete/drugInventory/' + $(this).attr('data-id'),
             dataType: 'json',
             success: function (response) {
                 $("#deleteModalConfirm").attr("disabled", false);
@@ -116,7 +117,7 @@ $(function () {
 
     //GET API call for Orders table
     $('#myTable').DataTable({
-        "ajax": 'http://18.209.9.245:3000/rest-api/orders',
+        "ajax": URL + '/rest-api/orders',
         "columns": [
             { "data": "OrderID" },
             { "data": "OrderStatus" },
@@ -140,7 +141,7 @@ $(function () {
 
         $.ajax({
             type: "PUT",
-            url: 'http://18.209.9.245:3000/rest-api/edit/drugInventory/' + DrugID,
+            url: URL + '/rest-api/edit/drugInventory/' + DrugID,
             data: {
                 // "DrugID": DrugID,
                 "DrugName": DrugName,
@@ -199,7 +200,7 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: 'http://18.209.9.245:3000/rest-api/new/drugInventory',
+            url: URL + '/rest-api/new/drugInventory',
             data: {
                 "DrugID": DrugID,
                 "DrugName": DrugName,
@@ -210,7 +211,7 @@ $(function () {
             },
             dataType: 'json',
             success: function (data) {
-                console.log('added',data)
+                console.log('added', data)
                 $("form#addDrugForm button[type=submit]").attr("disabled", false);
                 var newRow = `<tr>
             <td>${DrugID}</td>
